@@ -9,10 +9,12 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class ClimatFixtures extends Fixture implements DependentFixtureInterface
 {
+    const Clim_1 = 'clim-1';
+    const Clim_2 = 'clim-2';
+    const Clim_3 = 'clim-3';
     public function load(ObjectManager $manager)
     {
-         $product = new Product();
-         $manager->persist($product);
+
         $soleil = new Climat();
         $pluie = new Climat();
         $neige = new Climat();
@@ -26,7 +28,9 @@ class ClimatFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($pluie);
         $manager->persist($neige);
         $manager->flush();
-
+        $this->addReference(self::Clim_1, $soleil);
+        $this->addReference(self::Clim_2, $pluie);
+        $this->addReference(self::Clim_3, $neige);
     }
     public function getDependencies() {
         return array(

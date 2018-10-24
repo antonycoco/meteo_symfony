@@ -11,14 +11,25 @@ class BiltaineFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-       $Biltaine = new Billtain();
-        $Biltaine->setVille()
-                 ->setClimat()
-                 ->setTempirature()
-                 ->setDescription()
-                 ->setDate()
-        ;
+       $Biltaine1 = new Billtain();
 
+        $Biltaine1->setVille($this->getReference(VilleFixtures::VLL_1))
+                 ->setClimat($this->getReference(ClimatFixtures::Clim_1))
+                 ->setTempirature(29)
+                 ->setDescription('il fait chaud')
+        ;
+        $Biltaine2 = new Billtain();
+        $Biltaine2->setVille($this->getReference(VilleFixtures::VLL_2))
+            ->setClimat($this->getReference(ClimatFixtures::Clim_2))
+            ->setTempirature(15)
+            ->setDescription('il a la pluie')
+        ;
+        $Biltaine3 = new Billtain();
+        $Biltaine3->setVille($this->getReference(VilleFixtures::VLL_3))
+            ->setClimat($this->getReference(ClimatFixtures::Clim_3))
+            ->setTempirature(-5)
+            ->setDescription('il a la neige')
+        ;
         $manager->flush();
     }
 
@@ -30,6 +41,10 @@ class BiltaineFixtures extends Fixture implements DependentFixtureInterface
      */
     public function getDependencies()
     {
+        return array(
+            VilleFixtures::class,
+            ClimatFixtures::class,
 
+        );
     }
 }
