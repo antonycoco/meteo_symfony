@@ -1,0 +1,99 @@
+installation
+composer create-project symfony/website-skeleton my-project
+
+Pour web serveur apache, création d'un .htaccess
+composer require symfony/apache-pack
+
+Création BDD selon config .env
+php bin/console doctrine:database:create
+
+Création Entity / ajout d'attribut
+php bin/console make:entity
+
+Regeneration getter/setter
+php bin/console make:entity --regenerate
+
+Génère le SQL/Schema
+php bin/console make:migration
+
+Execute le SQL
+php bin/console doctrine:migrations:migrate
+
+trouve tous les services installé
+php bin/console debug:container
+
+cree des fixture
+php bin/console make:fixture
+
+mettre ces fixture a la bas
+php bin/console doctrine:fixtures:load
+
+mettre ces fixture a la bas avec des id au debut
+php bin/console doctrine:fixtures:load --purge-with-truncate
+
+//generer un formulaire
+php bin/console make:form
+
+
+php bin/console make:crud
+
+//clear la chache
+>php bin/console cache:clear
+
+
+//cree un utilisateur
+>php bin/console fos:user:create
+
+// mettre un role pour un utilisateur
+php bin/console fos:user:promote
+
+//pour la security pour les utilisateur exemple utilisateur 1 peut pas suprimmer ou modifier un autre article de utilisateur 2
+php bin/console make:voter
+
+
+
+//eric
+installation
+composer create-project symfony/website-skeleton my-project
+
+Pour web serveur apache, création d'un .htaccess
+composer require symfony/apache-pack
+
+Installation du module Twig (moteur de template)
+composer require "twig/twig:^2.0"
+
+Création BDD selon config .env
+php bin/console doctrine:database:create
+
+Création Entity / ajout d'attribut
+php bin/console make:entity
+
+Regeneration getter/setter
+php bin/console make:entity --regenerate
+
+Création cpntroleur
+php bin/console make:controller
+
+Generateur de controlleur + form + twig
+php bin/console make:crud NomDeLentity
+
+Génère le SQL/Schema et genère un fichier de version dans src\Migration
+php bin/console make:migration
+
+Execute le SQL
+php bin/console doctrine:migrations:migrate
+
+Liste de toutes les routes enregistrées auprès du routeur
+php bin/console debug:router
+
+Import fixtures
+composer require --dev doctrine/doctrine-fixtures-bundle
+
+Creer une fixture
+php bin/console make:fixture
+
+Injecte les données de la fixture ArticleFixtures.php
+php bin/console doctrine:fixtures:load
+
+Injecte les données de la fixture ArticleFixtures.php avec une réinitialisation des indexes
+php bin/console doctrine:fixtures:load --purge-with-truncate
